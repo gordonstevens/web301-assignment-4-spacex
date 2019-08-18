@@ -1,0 +1,35 @@
+footer {
+    bottom: 0;
+    background-color: rgba(0,0,0,0.95);
+    color: rgba(255,255,255,0.95);
+    font-size: 13px;
+    margin: 29px 0px 0px 0px;
+    padding: 23px 39px;
+    line-height: 3px;
+    box-shadow: 7px 0px 7px 0px rgba(15,14,13,0.95);
+    text-align: left;
+}
+
+footer h2 {
+    font-size: 19px;
+    color: rgba(216,92,31,0.95);
+}
+
+footer h2 a, footer a, footer h2 a:visited, footer a:visited {
+    font-size: 19px;
+    text-decoration: none;
+}
+
+footer a, footer a:visited {
+    color: rgba(255,255,255,0.85);
+}
+
+footer a:hover {
+    border-bottom: 3px solid rgba(255,255,255,0.85);
+}
+
+.mr { margin-right: 13px; }
+.mt { margin-top: 19px; }
+.floatleft { float: left; }
+.floatright { float: right; }
+.floatclear { clear: both; }

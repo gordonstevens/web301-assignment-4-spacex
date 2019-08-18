@@ -1,0 +1,47 @@
+/*
+I am super not a fan of this make-everything-white trend that Google developed,
+so years back I developed a "Halloween" theme, shades of black background, orange links, white text with tasteful alpha blends
+*/
+body {
+    margin: 0;
+    font-family: "Source Sans Pro", "Roboto", "Droid Sans", "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgba(39,37,33,1.00);
+    color: rgba(255,255,255,0.85);
+ }
+ 
+ .app {
+    text-align: center;
+ }
+  
+ /* Standard link styling */
+ a, a:visited { color: rgba(216,92,31,0.95); }
+ 
+ a:hover, a:active {
+    transition: 1.1s all;
+    color: rgba(252,116,48,0.95);
+    background-color: rgba(6,5,5,0.95);
+ }
+ 
+ /* Input styling */
+ button, input[type="submit"], input[type="reset"], .button {
+    display: inline-block;
+    background: rgba(216,92,31,0.95);
+    color: rgba(255,255,255,0.95);
+    border: 1px solid rgba(216,92,31,0.95);
+    padding: 10px 20px;
+    margin: 5px 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    text-decoration: none;
+    text-align: center;
+ }
+ 
+ button:hover, input[type="submit"]:hover, input[type="reset"]:hover, .button:hover {
+    transition: 0.9s all;
+    background: rgba(252,116,48,0.95);
+ }
+ 
