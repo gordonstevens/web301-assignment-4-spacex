@@ -1,34 +1,24 @@
-// Import React, Component and Vendor Library
+// Import React, Components and Vendor Library
 import React, { useEffect, useState } from 'react';
-//import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
+import withLoading from '../../components/withLoading/withLoading';
 import axios from 'axios';
 
 const Historical = () => {
     const [historicalData, setHistoricalData] = useState([]);
 
-    /*
-    spacex-history.json:
-    [{
-        "id":1,
-        "title":"Falcon 1 Makes History",
-        "event_date_utc":"2008-09-28T23:15:00Z",
-        "event_date_unix":1222643700,
-        "flight_number":4,
-        "details":"Falcon 1 becomes the first privately developed liquid fuel rocket to reach Earth orbit.",
-        "links":{"reddit":null,"article":"http://www.spacex.com/news/2013/02/11/flight-4-launch-update-0","wikipedia":"https://en.wikipedia.org/wiki/Falcon_1"}}, ...]
+    // I experimented loading this Axios call in App.js but it is way too slow there, so I moved it back to here
     
-    */
-
     // This generates Cross Origin Resource Sharing (CORS) errors but essentially because I do not have a proxy or own spacexdata.com, I cannot fix this.
     // Moreover I get insufficient resource errors, so back to local JSON files from the /public directory... 
 
     useEffect(() => {
+        // =========
         // Load historical data
+        // =========
+        let historicalDataUrl = `spacex-history.json`; // `https://api.spacexdata.com/v3/history`
         
-        let annoyingCORSJSONdata = `spacex-history.json`; // `https://api.spacexdata.com/v3/history`
-        
-        axios.get(annoyingCORSJSONdata,
+        axios.get(historicalDataUrl,
                 {
                     headers: {
                         'Access-Control-Allow-Origin': '*',
@@ -49,19 +39,18 @@ const Historical = () => {
             //console.log(JSON.stringify(historicalArray));
             setHistoricalData(historicalArray);
         })
-            .catch((error) => {
-                // Ready for any type of error, REF: https://github.com/axios/axios#handling-errors
-                if (error.response) {
-                    console.log("Response Error (data): " + error.response.data);
-                    console.log("Response Error (status): " + error.response.status);
-                    console.log("Response Error (headers): " + error.response.headers);
-                }
-                else if (error.request) { console.log("Request Error: " + error.request); }
-                else { console.log("Error: " + error.message); }
-                console.log(error.config);
-            })
-            .finally(() => {}
-            );
+        .catch((error) => {
+            // Ready for any type of error, REF: https://github.com/axios/axios#handling-errors
+            if (error.response) {
+                console.log("Response Error (data): " + error.response.data);
+                console.log("Response Error (status): " + error.response.status);
+                console.log("Response Error (headers): " + error.response.headers);
+            }
+            else if (error.request) { console.log("Request Error: " + error.request); }
+            else { console.log("Error: " + error.message); }
+            console.log(error.config);
+        })
+        .finally(() => {});
     });
 
     // Using A HREF to send to wikipedia in a new window REF: https://github.com/ReactTraining/react-router/issues/6344
@@ -86,4 +75,4 @@ const Historical = () => {
     );
 }
 
-export default Historical;
+export default withLoading(Historical);

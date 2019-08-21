@@ -1,7 +1,7 @@
-// Import React and CSS
+// Import React, CSS and vendor library
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './Card.module.css';
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
     return (
@@ -18,10 +18,7 @@ A Card can receive anything!
 */
 Card.propTypes = {
    children: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-      PropTypes.object,
-      PropTypes.any,
+      PropTypes.any
    ]),
 }
 
